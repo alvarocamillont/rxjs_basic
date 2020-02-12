@@ -1,0 +1,38 @@
+{
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "author": "Alvaro Camillo Neto",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "name": "rxjs_basic",
+  "version": "1.0.0",
+  "description": "Exercícios do RXJS",
+  "main": "lib/parcel-typescript-example.js",
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url .",
+    "watch": "parcel watch src/index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alvarocamillont/rxjs_basic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alvarocamillont/rxjs_basic/issues"
+  },
+  "homepage": "https://github.com/alvarocamillont/rxjs_basic/issues",
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "rxjs": "^6.5.5",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.8.3"
+  }
+}
