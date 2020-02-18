@@ -25,8 +25,9 @@ const subscriptionTwo = observable.subscribe((value) =>
   console.log('next', value)
 );
 
+subscription.add(subscriptionTwo);
+
 setTimeout(() => {
   subscription.unsubscribe();
-  subscriptionTwo.unsubscribe();
 }, 4500);
 console.log('Depois');
