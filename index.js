@@ -1,9 +1,7 @@
 import { Observable } from 'rxjs';
 
 const observer = {
-  next: (value) => console.log('next', value),
-  error: (error) => console.log('error', error),
-  complete: () => console.log('complete!')
+  next: (value) => console.log('next', value)
 };
 
 const observable = new Observable((subscriber) => {
@@ -13,4 +11,4 @@ const observable = new Observable((subscriber) => {
   subscriber.next('Teste');
 });
 
-observable.subscribe(observer);
+observable.subscribe((value) => console.log('next', value));
