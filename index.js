@@ -1,33 +1,17 @@
-import { Observable } from 'rxjs';
+import { fromEvent } from 'rxjs';
 
 const observer = {
-  next: (value) => console.log('next', value)
+  next: (val) => console.log('next', val),
+  error: (err) => console.log('error', err),
+  complete: () => console.log('Complete')
 };
 
-const observable = new Observable((subscriber) => {
-  let count = 0;
-  const id = setInterval(() => {
-    subscriber.next(count);
-    count += 1;
-  }, 1000);
+const source$ = fromEvent(document, 'click');
 
-  return () => {
-    console.log('chamada limpeza'), clearInterval(id);
-  };
-});
-
-console.log('Antes');
-const subscription = observable.subscribe((value) =>
-  console.log('next', value)
-);
-
-const subscriptionTwo = observable.subscribe((value) =>
-  console.log('next', value)
-);
-
-subscription.add(subscriptionTwo);
+const subOne = source$.subscribe(observer);
+const subTwo = source$.subscribe(observer);
 
 setTimeout(() => {
-  subscription.unsubscribe();
-}, 4500);
-console.log('Depois');
+  console.log('unsub');
+  subOne.unsubscribe();
+}, 10000);
