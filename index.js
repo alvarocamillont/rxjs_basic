@@ -1,4 +1,4 @@
-import { from } from 'rxjs';
+import { interval, timer } from 'rxjs';
 
 const observer = {
   next: (val) => console.log('next', val),
@@ -6,8 +6,8 @@ const observer = {
   complete: () => console.log('Complete')
 };
 
-const array$ = from([1, 2, 3, 4, 5]);
-const promise$ = from(fetch('https://api.github.com/users/octocat'));
+const interval$ = interval(1000);
+const timer$ = timer(0, 1000);
 
-array$.subscribe(observer);
-promise$.subscribe(observer);
+timer$.subscribe(observer);
+interval$.subscribe(observer);
