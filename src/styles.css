@@ -8,7 +8,7 @@ body {
 
 html {
   font-family: 'Roboto', sans-serif;
-  font-size: 62.5%;
+  font-size: 100%;
   font-weight: normal;
   letter-spacing: 0.2px;
   color: #545e6f;
@@ -70,4 +70,12 @@ body {
   margin-right: 14px;
   position: relative;
   top: 6px;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  height: 4px;
+  width: 0%;
+  background: #ff16b7;
 }
