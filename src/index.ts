@@ -1,13 +1,30 @@
-import { interval, timer } from 'rxjs';
+import { loadingService } from './loadingService';
 
-const observer = {
-  next: (val) => console.log('next', val),
-  error: (err) => console.log('error', err),
-  complete: () => console.log('Complete'),
-};
+// begin lesson code
+const loadingOverlay = document.getElementById('loading-overlay');
 
-const interval$ = interval(1000);
-const timer$ = timer(0, 1000);
+// const loading$ = new Subject();
 
-timer$.subscribe(observer);
-interval$.subscribe(observer);
+// loading$.subscribe(isLoading => {
+//   if(isLoading) {
+//     loadingOverlay.classList.add('open');
+//   } else {
+//     loadingOverlay.classList.remove('open')
+//   }
+// });
+
+// loading$.next(true);
+
+// setTimeout(() => loading$.next(false), 1500);
+
+loadingService.loadingStatus$.subscribe((isLoading) => {
+  if (isLoading) {
+    loadingOverlay.classList.add('open');
+  } else {
+    loadingOverlay.classList.remove('open');
+  }
+});
+
+loadingService.showLoading();
+
+setTimeout(() => loadingService.hideLoading(), 1500);
