@@ -1,13 +1,31 @@
-import { interval, timer } from 'rxjs';
+// begin lesson code
+import { ObservableStore } from './store';
 
-const observer = {
-  next: (val) => console.log('next', val),
-  error: (err) => console.log('error', err),
-  complete: () => console.log('Complete'),
-};
+const store = new ObservableStore({
+  user: 'joe',
+  isAuthenticated: true,
+});
 
-const interval$ = interval(1000);
-const timer$ = timer(0, 1000);
+/*
+ * Select a slice of state from store.
+ */
+store.selectState('user').subscribe(console.log);
 
-timer$.subscribe(observer);
-interval$.subscribe(observer);
+/*
+ * Update a property with new value.
+ */
+store.updateState({
+  user: 'bob',
+});
+
+store.updateState({
+  isAuthenticated: true,
+});
+
+/*
+ * Selected state above (user) only emits when value has changed
+ * for the requested property.
+ */
+store.updateState({
+  isAuthenticated: false,
+});
